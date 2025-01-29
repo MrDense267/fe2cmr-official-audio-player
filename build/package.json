@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node frontend.js"
+    "start": "node ."
   },
   "dependencies": {
     "cors": "^2.8.5",
