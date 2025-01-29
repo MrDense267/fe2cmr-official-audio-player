@@ -1,111 +1,407 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>FE2CMREBORN.IO</title>
-    <link rel="shortcut icon" type="image/png" href="https://fe2.io/FE2Logo.ico">
-    <style>
-        body, html {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .fe2ioWindow {
-            width: 400px;
-            padding: 10px;
-            border: 3px solid #121920;
-            border-radius: 8px;
-            background: linear-gradient(#454c4d, #1d2833);
-            text-align: center;
-        }
-        .slider {
-            width: 100%;
-            border-radius: 8px;
-            background: linear-gradient(#0c1116, #383d3d);
-            outline: none;
-        }
-        .slider::-webkit-slider-thumb,
-        .slider::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            background: linear-gradient(#3498db, #0f6096);
-            cursor: pointer;
-            border-radius: 8px;
-        }
-        .discordButton {
-            width: 100%;
-            height: 48px;
-            font-size: large;
-            color: white;
-            background-color: #7289DA;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-        }
-        .discordButton:hover {
-            background-color: #4f5e96;
-        }
-        .embedContent {
-            width: 420px;
-            margin: auto;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="http://cdn.discordapp.com/attachments/1060689121116426302/1060699627529175130/FE2IO_Logo.png" width="400px">
-        <div class="fe2ioWindow">
-            <b>Enter Username:</b>
-            <input type="text" id="uname">
-            <button id="connectButton">Connect</button>
-            <br><br>
-            <b>Volume: </b><label id="volumeInfo">70%</label>
-            <input type="range" min="0" max="100" value="70" class="slider" id="volumeRange">
-            <br><br>
-            <form action="https://discord.gg/crazyblox" target="_blank">
-                <input class="discordButton" type="submit" value="Join our Discord for FE2.IO Supported Content"/>
-            </form>
+    <head>
+        <title>FE2.IO</title>
+        <link rel="shortcut icon" type="image/png" href="https://fe2.io/FE2Logo.ico">
+        <style>
+            body, html {
+                width: auto;
+                height: 100%;
+                margin: 0;
+                background-color: #000;
+            }
+
+            html {
+                font-family: Arial, Helvetica, sans-serif;
+                color: rgb(255, 255, 255);
+                text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+            }
+
+            .container {
+                justify-content: center;
+                align-items: center;
+            }
+
+            .fe2ioLogo {
+                width: 400px;
+                margin: auto;
+            }
+
+            .fe2ioWindow {
+                margin: auto;
+                width: 400px;
+                border: 3px solid rgb(18, 25, 32);
+                border-radius: 8px;
+                background-image: linear-gradient(rgb(69, 76, 77), rgb(29, 40, 51));
+                padding: 10px;
+            }
+
+            .bg {
+                background-image: url("https://fe2.io/FE2IO_BG (2).jpg");
+                height: 100%;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+            }
+
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                background-image: linear-gradient(rgb(12, 17, 22), rgb(56, 61, 61));
+                outline: none;
+                -webkit-transition: .2s;
+                border-radius: 8px;
+            }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background: linear-gradient(rgb(52, 152, 219), rgb(15, 96, 150));
+                cursor: pointer;
+                border-radius: 8px;
+            }
+
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                background: linear-gradient(rgb(52, 152, 219), rgb(15, 96, 150));
+                cursor: pointer;
+                border-radius: 8px;
+            }
+
+            .copyright {
+                text-align: center;
+            }
+
+            .twitter-timeline {
+                text-align: center;
+                margin: auto;
+            }
+
+            .embedContent {
+                margin: auto;
+                width: 420px;
+            }
+
+            .discordButton {
+                border-style: none;
+                background-color: #7289DA;
+                justify-content: center;
+                margin: auto;
+                font-size: large;
+                width: 100%;
+                height: 48px;
+                color: white;
+                text-align: center;
+                white-space: normal;
+                -moz-text-size-adjust: auto;
+                border-radius: 8px;
+            }
+
+            .discordButton:hover {
+                background-color: #4f5e96;
+                cursor: pointer;
+            }
+
+            br {
+                display: block;
+                /* makes it have a width */
+                content: "";
+                /* clears default height */
+                margin-top: 6px;
+                /* change this to whatever height you want it */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bg">
+            <div class="container">
+                <div class="fe2ioLogo">
+                    <img src="http://cdn.discordapp.com/attachments/1060689121116426302/1060699627529175130/FE2IO_Logo.png" width="400px">
+                </div>
+                <div class="fe2ioWindow">
+                    <div id="connectUI">
+                        <!-- Username Stuff-->
+                        <b>Enter Username:</b>
+                        <label id="setname"></label>
+                        <input type="text" id="uname">
+                        <button id="connectButton">Connect</button>
+                    </div>
+                    <div id="connectStatus" hidden="true">
+                        <!-- CONNECTION STATUS -->
+                        <b>FE2.IO:</b>
+                        <label id="fe2ioStatus"></label>
+                        <input id="refreshButton" type="button" value="Reload" onClick="refresh(this)" hidden="true">
+                    </div>
+                    <div id="bgmStatus" hidden="true">
+                        <!-- BGM STATUS -->
+                        <b>BGM: </b>
+                        <label id="bgmInfo"></label>
+                    </div>
+                    <br>
+                    <div>
+                        <!-- Volume Settings -->
+                        <b>Volume: </b>
+                        <label id="volumeInfo">70%</label>
+                        <br>
+                        <input type="range" min="0" max="100" value="70" class="slider" id="volumeRange" width="300px">
+                    </div>
+                    <div>
+                        <!-- FE2.IO SETTINGS -->
+                        <div>
+                            <!-- Death Type -->
+                            <b>On Death:</b>
+                            <br>
+                            <input type="radio" id="deathQuietenRadio" name="deathType" value="quieten" checked="true">
+                            Quieten BGM
+                            <input type="radio" id="deathStopRadio" name="deathType" value="stop">
+                            Stop BGM
+                            <input type="radio" id="deathDisableRadio" name="deathType" value="off">Disable
+                        
+                        </div>
+                        <div>
+                            <!-- Stop on Disconnect? -->
+                            <b>Leaving Game:</b>
+                            <br>
+                            <input type="radio" id="leaveStopRadio" name="leaveType" value="stop" checked="true">
+                            Stop BGM
+                            <input type="radio" id="leaveDisableRadio" name="leaveType" value="off">Disable
+                        
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="embedContent">
+                    <form action="https://discord.gg/crazyblox" target="_blank">
+                        <input class="discordButton" type="submit" value="Join our Discord for FE2.IO Supported Content (Go to #cm-maps)"/>
+                    </form>
+                    <br>
+                    <div>
+                        <a class="twitter-timeline" data-width="420" data-height="360" data-dnt="true" data-theme="dark" href="https://twitter.com/fe2game?ref_src=twsrc%5Etfw"></a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+                <br>
+                <div class="copyright">[RBX-2-WEB Player V1.11] (C) Crazyblox Ltd 2023
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-    <script>
-        const socket = io("wss://fe2cmr-official-audio-player.onrender.com");
-        const usernameInput = document.getElementById("uname");
-        const connectBtn = document.getElementById("connectButton");
-        const volumeSlider = document.getElementById("volumeRange");
-        const volumeInfo = document.getElementById("volumeInfo");
-
-        let isConnected = false;
-        let audioTrack = new Audio();
-        let volumeMultiplier = 1;
-
-        function connectToServer() {
-            if (isConnected) return;
-            socket.emit("statusUpdate", { type: "connect", username: usernameInput.value });
+        <script>
+            const _0x4aff8b = _0x53ff;
+(function(_0x308c49, _0x33b6ba) {
+    const _0x5e1e8f = _0x53ff
+      , _0x46ab92 = _0x308c49();
+    while (!![]) {
+        try {
+            const _0x36c916 = parseInt(_0x5e1e8f(0x13c)) / 0x1 + -parseInt(_0x5e1e8f(0x146)) / 0x2 * (parseInt(_0x5e1e8f(0x142)) / 0x3) + parseInt(_0x5e1e8f(0x152)) / 0x4 * (parseInt(_0x5e1e8f(0x127)) / 0x5) + parseInt(_0x5e1e8f(0x155)) / 0x6 * (parseInt(_0x5e1e8f(0x139)) / 0x7) + parseInt(_0x5e1e8f(0x130)) / 0x8 + parseInt(_0x5e1e8f(0x14b)) / 0x9 * (parseInt(_0x5e1e8f(0x13f)) / 0xa) + parseInt(_0x5e1e8f(0x141)) / 0xb * (-parseInt(_0x5e1e8f(0x134)) / 0xc);
+            if (_0x36c916 === _0x33b6ba)
+                break;
+            else
+                _0x46ab92['push'](_0x46ab92['shift']());
+        } catch (_0x4c8850) {
+            _0x46ab92['push'](_0x46ab92['shift']());
         }
+    }
+}(_0x2a2b, 0x2048c));
+const usernameContainer = document[_0x4aff8b(0x119)](_0x4aff8b(0x158))
+  , usernameInput = document[_0x4aff8b(0x119)](_0x4aff8b(0x13b))
+  , connectBtn = document[_0x4aff8b(0x119)]('connectBTN')
+  , reconnectBtn = document[_0x4aff8b(0x119)]('reconnectBTN')
+  , connectionInfoContainer = document[_0x4aff8b(0x119)]('connectInfo')
+  , statusText = document[_0x4aff8b(0x119)](_0x4aff8b(0x12f))
+  , bgmStatusText = document['getElementById'](_0x4aff8b(0x150))
+  , volumeStatusText = document[_0x4aff8b(0x119)](_0x4aff8b(0x156))
+  , volumeSlider = document['getElementById']('volumeRange')
+  , loopCheckbox = document['getElementById'](_0x4aff8b(0x144))
+  , audioTrack = new Audio();
+let isConnected = ![]
+  , audioStartTimestamp = undefined
+  , volumeMultiplier = 0x1
+  , fadeInterval = undefined;
+function _0x2a2b() {
+    const _0xe2b018 = ['dispatchEvent', 'innerHTML', '5030bSDcrz', 'input[name=\x22', '111716tnheCl', '6ctlifl', 'ended', 'loopBGMCheckbox', 'ingame', '237772zMmtBf', 'getTime', 'death_radio', 'Left\x20Game', 'Playing\x20BGM', '3357lnPBHT', 'volume', 'hidden', 'leftGame', 'Volume:\x20', 'bgmInfo', 'type', '12fhLzoD', 'quieten', 'Playing\x20BGM;\x20Quietened', '234NCVqXy', 'volumeInfo', 'send', 'usernameInput', 'leave_radio', 'stringify', 'data', 'stop', 'addEventListener', 'querySelector', 'getElementById', 'play', 'died', 'click', '\x22]:checked', 'duration', 'input', 'Stopped\x20BGM;\x20', 'status', 'wss://fe2cmlegacyrevivedio.onrender.com', 'toPrecision', 'Connecting\x20as\x20', 'statusUpdate', 'currentTime', '217085ENOiCl', 'Couldn\x27t\x20get\x20IO\x20source.', 'Connected\x20as\x20', 'loop', 'connect', 'startPlaying', 'open', 'parse', 'info', '1861312ADdfkR', 'catch', 'then', 'bgm', '768GODCjr', 'checked', 'Waiting\x20for\x20BGM', 'An\x20unknown\x20error\x20has\x20occurred.', 'startUtcTime', '41104tPZrky', 'value', 'username', '240450kbXcvU'];
+    _0x2a2b = function() {
+        return _0xe2b018;
+    }
+    ;
+    return _0x2a2b();
+}
+const musicStartEvent = new Event(_0x4aff8b(0x12c));
+function toggleConnectionGroupVisibility(_0x4a471c) {
+    const _0x2d9122 = _0x4aff8b;
+    usernameContainer[_0x2d9122(0x14d)] = !_0x4a471c,
+    connectionInfoContainer[_0x2d9122(0x14d)] = _0x4a471c;
+}
+function _0x53ff(_0x20b195, _0x3c6b87) {
+    const _0x2a2b79 = _0x2a2b();
+    return _0x53ff = function(_0x53ff01, _0x253051) {
+        _0x53ff01 = _0x53ff01 - 0x113;
+        let _0xb21130 = _0x2a2b79[_0x53ff01];
+        return _0xb21130;
+    }
+    ,
+    _0x53ff(_0x20b195, _0x3c6b87);
+}
+function clampToFinite(_0x17efa5) {
+    const _0x43befe = _0x4aff8b;
+    return parseFloat(_0x17efa5)[_0x43befe(0x123)](0xc);
+}
+function getCheckedRadioValue(_0x488556) {
+    const _0x434f98 = _0x4aff8b
+      , _0x90e57a = document[_0x434f98(0x118)](_0x434f98(0x140) + _0x488556 + _0x434f98(0x11d));
+    return _0x90e57a ? _0x90e57a[_0x434f98(0x13a)] : undefined;
+}
+function parseSocketMessage(_0x179952) {
+    const _0xeb65d3 = _0x4aff8b;
+    let _0x1d429e = undefined;
+    try {
+        _0x1d429e = JSON[_0xeb65d3(0x12e)](_0x179952);
+    } catch (_0x47bc93) {}
+    return _0x1d429e;
+}
+loopCheckbox[_0x4aff8b(0x117)]('change', () => {
+    const _0x3ece83 = _0x4aff8b;
+    audioTrack[_0x3ece83(0x12a)] = loopCheckbox['checked'];
+}
+);
+function playAudio(_0x52422d, _0x2a9252) {
+    const _0x356661 = _0x4aff8b;
+    fadeVolume(0x0, 0x1),
+    audioStartTimestamp = _0x2a9252,
+    audioTrack['src'] = _0x52422d,
+    audioTrack[_0x356661(0x12a)] = loopCheckbox[_0x356661(0x135)],
+    audioTrack[_0x356661(0x11a)]()[_0x356661(0x132)]( () => audioTrack[_0x356661(0x13d)](musicStartEvent))[_0x356661(0x131)]( () => bgmStatusText[_0x356661(0x13e)] = _0x356661(0x128)),
+    bgmStatusText[_0x356661(0x13e)] = _0x356661(0x14a);
+}
+function stopAudio(_0x24b65a) {
+    const _0x50cc60 = _0x4aff8b;
+    audioTrack['pause'](),
+    !isNaN(audioTrack[_0x50cc60(0x11e)]) && audioTrack[_0x50cc60(0x11e)] !== Infinity && (audioTrack[_0x50cc60(0x126)] = audioTrack[_0x50cc60(0x11e)]),
+    _0x24b65a && (bgmStatusText['innerHTML'] = _0x50cc60(0x120) + _0x24b65a + '\x20');
+}
+function fadeVolume(_0x2df1dd, _0x2cf3aa) {
+    const _0x558de4 = _0x4aff8b;
+    fadeInterval != undefined && clearInterval(fadeInterval);
+    if (_0x2df1dd <= 0x0)
+        return volumeMultiplier = _0x2cf3aa,
+        audioTrack[_0x558de4(0x14c)] = volumeMultiplier,
+        bgmStatusText[_0x558de4(0x13e)] = _0x558de4(0x154),
+        new Promise(_0xfa5fb4 => _0xfa5fb4());
+    const _0x5ac905 = volumeMultiplier
+      , _0x1f4c72 = 0x14
+      , _0x3b5952 = _0x2cf3aa - _0x5ac905
+      , _0x5570b6 = Math['floor'](_0x2df1dd * 0x3e8 / _0x1f4c72);
+    let _0x1554f2 = 0x1;
+    return new Promise(_0x2dd772 => {
+        fadeInterval = setInterval( () => {
+            const _0x1e8b51 = _0x53ff;
+            volumeMultiplier = _0x5ac905 + _0x1554f2 / _0x5570b6 * _0x3b5952,
+            audioTrack[_0x1e8b51(0x14c)] = volumeMultiplier,
+            bgmStatusText['innerHTML'] = _0x1e8b51(0x154),
+            ++_0x1554f2 === _0x5570b6 + 0x1 && (clearInterval(fadeInterval),
+            fadeInterval = undefined,
+            _0x2dd772());
+        }
+        , _0x1f4c72);
+    }
+    );
+}
+function connectToServer() {
+    const _0x4acf6f = _0x4aff8b;
+    if (isConnected)
+        return;
+    toggleConnectionGroupVisibility(![]),
+    reconnectBtn[_0x4acf6f(0x14d)] = !![],
+    statusText[_0x4acf6f(0x13e)] = _0x4acf6f(0x124) + usernameInput[_0x4acf6f(0x13a)],
+    bgmStatusText[_0x4acf6f(0x13e)] = _0x4acf6f(0x136);
+    const _0x2e5b56 = new WebSocket(_0x4acf6f(0x122));
+    _0x2e5b56[_0x4acf6f(0x117)](_0x4acf6f(0x12d), () => {
+        const _0x233244 = _0x4acf6f;
+        _0x2e5b56[_0x233244(0x157)](JSON[_0x233244(0x114)]({
+            'type': _0x233244(0x12b),
+            'connectionType': 'io',
+            'username': usernameInput['value']
+        }));
+    }
+    ),
+    _0x2e5b56[_0x4acf6f(0x117)]('message', _0x587194 => {
+        const _0x24f177 = _0x4acf6f;
+        if (!_0x587194[_0x24f177(0x115)])
+            return;
+        let _0xf71b80 = parseSocketMessage(_0x587194[_0x24f177(0x115)]);
+        if (!_0xf71b80)
+            return;
+        if (_0xf71b80['type'] == 'connectSuccess')
+            isConnected = !![],
+            statusText[_0x24f177(0x13e)] = _0x24f177(0x129) + usernameInput[_0x24f177(0x13a)] + ';\x20Listening\x20';
+        else {
+            if (_0xf71b80[_0x24f177(0x151)] === _0x24f177(0x125)) {
+                if (_0xf71b80[_0x24f177(0x13b)] === usernameInput['value']) {
+                    if (_0xf71b80[_0x24f177(0x121)] === _0x24f177(0x145))
+                        playAudio(_0xf71b80[_0x24f177(0x133)], _0xf71b80[_0x24f177(0x138)]);
+                    else {
+                        if (_0xf71b80[_0x24f177(0x121)] === _0x24f177(0x11b)) {
+                            const _0x3a74c1 = getCheckedRadioValue(_0x24f177(0x148));
+                            if (_0x3a74c1 == _0x24f177(0x153))
+                                fadeVolume(0x1, 0.5);
+                            else
+                                _0x3a74c1 == _0x24f177(0x116) && stopAudio('Died');
+                        } else {
+                            if (_0xf71b80[_0x24f177(0x121)] === _0x24f177(0x14e)) {
+                                const _0x598b5e = getCheckedRadioValue(_0x24f177(0x113));
+                                _0x598b5e == 'stop' && stopAudio(_0x24f177(0x149));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ),
+    _0x2e5b56[_0x4acf6f(0x117)]('close', () => {
+        const _0x5073c4 = _0x4acf6f;
+        isConnected = ![],
+        stopAudio(),
+        statusText[_0x5073c4(0x13e)] = _0x5073c4(0x137),
+        reconnectBtn[_0x5073c4(0x14d)] = ![];
+    }
+    );
+}
+audioTrack[_0x4aff8b(0x117)](_0x4aff8b(0x12c), () => {
+    const _0x1c18eb = _0x4aff8b;
+    if (audioStartTimestamp == undefined)
+        return;
+    const _0x52fb61 = new Date()[_0x1c18eb(0x147)]() / 0x3e8;
+    audioTrack[_0x1c18eb(0x126)] = clampToFinite(_0x52fb61 - audioStartTimestamp);
+}
+),
+audioTrack[_0x4aff8b(0x117)](_0x4aff8b(0x143), () => {
+    const _0x32a9ec = _0x4aff8b;
+    bgmStatusText[_0x32a9ec(0x13e)] = 'Finished\x20Playing\x20BGM';
+}
+),
+connectBtn[_0x4aff8b(0x117)](_0x4aff8b(0x11c), connectToServer),
+reconnectBtn['addEventListener'](_0x4aff8b(0x11c), connectToServer),
+volumeSlider['addEventListener'](_0x4aff8b(0x11f), () => {
+    const _0x57a61b = _0x4aff8b;
+    volumeStatusText[_0x57a61b(0x13e)] = _0x57a61b(0x14f) + volumeSlider[_0x57a61b(0x13a)] + '%',
+    audioTrack[_0x57a61b(0x14c)] = volumeSlider[_0x57a61b(0x13a)] / 0x64 * clampToFinite(volumeMultiplier);
+}
+),
+audioTrack[_0x4aff8b(0x14c)] = volumeSlider[_0x4aff8b(0x13a)] / 0x64 * clampToFinite(volumeMultiplier),
+volumeStatusText[_0x4aff8b(0x13e)] = _0x4aff8b(0x14f) + volumeSlider[_0x4aff8b(0x13a)] + '%';
 
-        socket.on("connectSuccess", (data) => {
-            isConnected = true;
-            console.log(`Connected as ${usernameInput.value}`);
-        });
-
-        volumeSlider.addEventListener("input", () => {
-            audioTrack.volume = volumeSlider.value / 100 * volumeMultiplier;
-            volumeInfo.innerHTML = `Volume: ${volumeSlider.value}%`;
-        });
-
-        connectBtn.addEventListener("click", connectToServer);
-    </script>
-</body>
+        </script>
+        <audio preload="auto" src="https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3?raw=true"></audio>
+    </body>
 </html>
