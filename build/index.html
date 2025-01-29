@@ -1,203 +1,163 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>FE2.IO</title>
-        <link rel="shortcut icon" type="image/png" href="https://fe2.io/FE2Logo.ico">
-        <style>
-            body, html {
-                width: auto;
-                height: 100%;
-                margin: 0;
-                background-color: #000;
-            }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FE2CM Revived IO</title>
+    <link rel="shortcut icon" type="image/png" href="https://fe2.io/FE2Logo.ico">
+    <style>
+        body, html {
+            width: auto;
+            height: 100%;
+            margin: 0;
+            background-color: #000;
+            color: rgb(255, 255, 255);
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
 
-            html {
-                font-family: Arial, Helvetica, sans-serif;
-                color: rgb(255, 255, 255);
-                text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
-            }
+        .BG {
+            background-image: url("MapBG.jpg");
+            background-attachment: local;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            height: 100%;
+        }
 
-            .container {
-                justify-content: center;
-                align-items: center;
-            }
+        .Container {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
 
-            .fe2ioLogo {
-                width: 400px;
-                margin: auto;
-            }
+        .Logo {
+            width: 390px;
+            margin: auto;
+        }
 
-            .fe2ioWindow {
-                margin: auto;
-                width: 400px;
-                border: 3px solid rgb(18, 25, 32);
-                border-radius: 8px;
-                background-image: linear-gradient(rgb(69, 76, 77), rgb(29, 40, 51));
-                padding: 10px;
-            }
+        .Mainbox {
+            font-family: Arial, Helvetica, sans-serif,Ubuntu;
+            font-size: 100%;
+            margin: auto;
+            width: 400px;
+            border: 3px solid rgb(18, 25, 32);
+            border-radius: 8px;
+            background-image: linear-gradient(rgb(69, 76, 77), rgb(29, 40, 51));
+            padding: 10px;
+        }
+        .embedContent {
+            margin: auto;
+            width: 420px;
+        }
+        .discordButton {
+            border-style: none;
+            background-color: #7289DA;
+            justify-content: center;
+            margin: auto;
+            font-size: large;
+            width: 100%;
+            height: 55px;
+            color: white;
+            border: 3px solid rgb(60, 92, 199);
+            text-align: center;
+            white-space: normal;
+            -moz-text-size-adjust: auto;
+            border-radius: 8px;
+        }
 
-            .bg {
-                background-image: url("https://fe2.io/FE2IO_BG (2).jpg");
-                height: 100%;
-                background-attachment: fixed;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                position: relative;
-            }
+        .discordButton:hover {
+            background-color: #4f5e96;
+            cursor: pointer;
+        }
+        .Volumeslider {
+            -webkit-appearance: none;
+            width: 100%;
+            background-image: linear-gradient(rgb(12, 17, 22), rgb(56, 61, 61));
+            outline: none;
+            -webkit-transition: .2s;
+            border-radius: 8px;
+        }
 
-            .slider {
-                -webkit-appearance: none;
-                width: 100%;
-                background-image: linear-gradient(rgb(12, 17, 22), rgb(56, 61, 61));
-                outline: none;
-                -webkit-transition: .2s;
-                border-radius: 8px;
-            }
+        .Volumeslider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(rgb(52, 152, 219), rgb(15, 96, 150));
+            cursor: pointer;
+            border-radius: 8px;
+        }
 
-            .slider::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 25px;
-                height: 25px;
-                background: linear-gradient(rgb(52, 152, 219), rgb(15, 96, 150));
-                cursor: pointer;
-                border-radius: 8px;
-            }
-
-            .slider::-moz-range-thumb {
-                width: 25px;
-                height: 25px;
-                background: linear-gradient(rgb(52, 152, 219), rgb(15, 96, 150));
-                cursor: pointer;
-                border-radius: 8px;
-            }
-
-            .copyright {
-                text-align: center;
-            }
-
-            .twitter-timeline {
-                text-align: center;
-                margin: auto;
-            }
-
-            .embedContent {
-                margin: auto;
-                width: 420px;
-            }
-
-            .discordButton {
-                border-style: none;
-                background-color: #7289DA;
-                justify-content: center;
-                margin: auto;
-                font-size: large;
-                width: 100%;
-                height: 48px;
-                color: white;
-                text-align: center;
-                white-space: normal;
-                -moz-text-size-adjust: auto;
-                border-radius: 8px;
-            }
-
-            .discordButton:hover {
-                background-color: #4f5e96;
-                cursor: pointer;
-            }
-
-            br {
-                display: block;
-                /* makes it have a width */
-                content: "";
-                /* clears default height */
-                margin-top: 6px;
-                /* change this to whatever height you want it */
-            }
-        </style>
-    </head>
-    <body>
-        <div class="bg">
-            <div class="container">
-                <div class="fe2ioLogo">
-                    <img src="http://cdn.discordapp.com/attachments/1060689121116426302/1060699627529175130/FE2IO_Logo.png" width="400px">
+        .Volumeslider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(rgb(52, 152, 219), rgb(15, 96, 150));
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="BG">
+        <div class="Container">
+            <div class="Logo">
+                <img src="logo.webp" alt="Logo" style="width: 100%; max-width: 390px;">
+            </div>
+            <div class="Mainbox">
+                <div id="usernameInput">
+                    <label for="username"><b>Enter Username:</b></label>
+                    <input type="text" id="username">
+                    <input type="button" id="connectBTN" value="Connect">
                 </div>
-                <div class="fe2ioWindow">
-                    <div id="connectUI">
-                        <!-- Username Stuff-->
-                        <b>Enter Username:</b>
-                        <label id="setname"></label>
-                        <input type="text" id="uname">
-                        <button id="connectButton">Connect</button>
-                    </div>
-                    <div id="connectStatus" hidden="true">
-                        <!-- CONNECTION STATUS -->
-                        <b>FE2.IO:</b>
-                        <label id="fe2ioStatus"></label>
-                        <input id="refreshButton" type="button" value="Reload" onClick="refresh(this)" hidden="true">
-                    </div>
-                    <div id="bgmStatus" hidden="true">
-                        <!-- BGM STATUS -->
-                        <b>BGM: </b>
-                        <label id="bgmInfo"></label>
-                    </div>
-                    <br>
-                    <div>
-                        <!-- Volume Settings -->
-                        <b>Volume: </b>
-                        <label id="volumeInfo">70%</label>
-                        <br>
-                        <input type="range" min="0" max="100" value="70" class="slider" id="volumeRange" width="300px">
-                    </div>
-                    <div>
-                        <!-- FE2.IO SETTINGS -->
-                        <div>
-                            <!-- Death Type -->
-                            <b>On Death:</b>
-                            <br>
-                            <input type="radio" id="deathQuietenRadio" name="deathType" value="quieten" checked="true">
-                            Quieten BGM
-                            <input type="radio" id="deathStopRadio" name="deathType" value="stop">
-                            Stop BGM
-                            <input type="radio" id="deathDisableRadio" name="deathType" value="off">Disable
-                        
-                        </div>
-                        <div>
-                            <!-- Stop on Disconnect? -->
-                            <b>Leaving Game:</b>
-                            <br>
-                            <input type="radio" id="leaveStopRadio" name="leaveType" value="stop" checked="true">
-                            Stop BGM
-                            <input type="radio" id="leaveDisableRadio" name="leaveType" value="off">Disable
-                        
-                        </div>
-                    </div>
+                <div id="connectInfo" hidden="true">
+                    <label><b>FE2CM.IO:</b></label>
+                    <label id="info">None</label>
+                    <input type="button" id="reconnectBTN" value="Reconnect" hidden="true"><br>
+                    <label><b>BGM:</b></label>
+                    <label id="bgmInfo">Playing: 0:00/0:00</label>
                 </div>
-                <br>
-                <div class="embedContent">
-                    <form action="https://discord.gg/crazyblox" target="_blank">
-                        <input class="discordButton" type="submit" value="Join our Discord for FE2.IO Supported Content (Go to #cm-maps)"/>
-                    </form>
-                    <br>
-                    <div>
-                        <a class="twitter-timeline" data-width="420" data-height="360" data-dnt="true" data-theme="dark" href="https://twitter.com/fe2game?ref_src=twsrc%5Etfw"></a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </div>
+                <div>
+                    <label for="volumeRange" id="volumeInfo">Volume: 70%</label><br>
+                    <input type="range" min="0" max="100" value="70" class="Volumeslider" id="volumeRange">
                 </div>
-                <br>
-                <div class="copyright">[RBX-2-WEB Player V1.11] (C) Crazyblox Ltd 2023
+                <div>
+                    <label><b>On Death:</b></label><br>
+                    <input type="radio" name="death_radio" id="quieten_bgm_ondeath" value="quieten" checked="true">
+                    <label for="quieten">Quieten BGM</label>
+                    <input type="radio" name="death_radio" id="stop_bgm_ondeath" value="stop">
+                    <label for="stop">Stop BGM</label>
+                    <input type="radio" name="death_radio" id="disable_bgm_ondeath" value="disable">
+                    <label for="stop">Disable</label>
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <div>
+                    <label><b>Leaving Game:</b></label><br>
+                    <input type="radio" name="leave_radio" id="stop_bgm_onleaving" value="stop" checked="true">
+                    <label for="quieten">Stop BGM</label>
+                    <input type="radio" name="leave_radio" id="disable_bgm_onleaving" value="disable">
+                    <label for="stop">Disable</label>
+                </div>
+                <div>
+                    <label><b>Loop BGM:</b></label><br>
+                    <input type="checkbox" id="loopBGMCheckbox">
+                    <label for="loopBGMCheckbox">Enable Looping</label>
+                </div>
+
             </div>
         </div>
-        <script>
-            const _0x4aff8b = _0x53ff;
+        <div class="embedContent">
+            <form action="https://discord.gg/qDQcDssvyJ" target="_blank">
+                <button class="discordButton" type="submit">
+                    <img src="discord.svg" alt="Discord" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 10px;">
+                    Join the Discord server for updates!
+                </button>
+            </form>
+
+        </div>
+    </div>
+    <script>
+        const _0x4aff8b = _0x53ff;
 (function(_0x308c49, _0x33b6ba) {
     const _0x5e1e8f = _0x53ff
       , _0x46ab92 = _0x308c49();
@@ -401,7 +361,6 @@ volumeSlider['addEventListener'](_0x4aff8b(0x11f), () => {
 audioTrack[_0x4aff8b(0x14c)] = volumeSlider[_0x4aff8b(0x13a)] / 0x64 * clampToFinite(volumeMultiplier),
 volumeStatusText[_0x4aff8b(0x13e)] = _0x4aff8b(0x14f) + volumeSlider[_0x4aff8b(0x13a)] + '%';
 
-        </script>
-        <audio preload="auto" src="https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3?raw=true"></audio>
-    </body>
+    </script>
+</body>
 </html>
