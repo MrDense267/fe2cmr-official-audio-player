@@ -1,0 +1,12 @@
+{
+  "name": "fe2cm_reborn_official_audio_player",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node backend.js"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  }
+}
