@@ -11,11 +11,11 @@ const wss = new WebSocket.Server({ server });
 app.use(cors());
 app.use(express.json());
 
-// Store connected users and their BGM status
+// Store connected users
 let connectedUsers = {};
 
 wss.on("connection", (ws) => {
-    console.log("🔵 New WebSocket Connection Established");
+    console.log("🔵 WebSocket Connected");
 
     ws.on("message", (message) => {
         try {
@@ -23,49 +23,40 @@ wss.on("connection", (ws) => {
             console.log(`📩 Received message:`, data);
 
             if (data.type === "connect") {
-                connectedUsers[ws] = {
-                    username: data.username,
-                    status: "connected",
-                    bgm: null,
-                    startUtcTime: null
-                };
-
+                connectedUsers[ws] = { username: data.username, status: "connected", bgm: null };
                 ws.send(JSON.stringify({ type: "connectSuccess", username: data.username }));
             }
 
             if (data.type === "statusUpdate") {
-                if (data.status === "ingame") {
-                    connectedUsers[ws] = {
-                        ...connectedUsers[ws],
-                        status: "ingame",
-                        bgm: data.bgm,
-                        startUtcTime: Date.now() / 1000 // Store timestamp
-                    };
-                }
-
-                if (data.status === "died") {
-                    broadcast({ type: "statusUpdate", username: data.username, status: "died" });
-                }
-
-                if (data.status === "leftGame") {
-                    broadcast({ type: "statusUpdate", username: data.username, status: "leftGame" });
-                }
+                connectedUsers[ws] = { ...connectedUsers[ws], status: data.status, bgm: data.bgm };
+                broadcast({ type: "statusUpdate", username: data.username, status: data.status });
             }
         } catch (error) {
-            console.error("⚠️ Error processing message:", error);
+            console.error("⚠️ Error:", error);
         }
     });
 
     ws.on("close", () => {
-        console.log("🔴 User Disconnected");
-        if (connectedUsers[ws]) {
-            broadcast({ type: "statusUpdate", username: connectedUsers[ws].username, status: "leftGame" });
-        }
+        console.log("🔴 WebSocket Disconnected");
         delete connectedUsers[ws];
     });
 });
 
-// Function to Broadcast Messages to All Clients
+// ✅ ADD THIS ROUTE TO FIX THE 404 ERROR!
+app.post("/statusUpdate", (req, res) => {
+    const { type, username, status, bgm } = req.body;
+
+    if (!username || !status) {
+        return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    console.log(`📡 Status Update: ${username} is now ${status}`);
+    broadcast({ type, username, status, bgm });
+
+    res.json({ message: "Status update received" });
+});
+
+// Function to Broadcast WebSocket Messages
 function broadcast(data) {
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
@@ -74,13 +65,8 @@ function broadcast(data) {
     });
 }
 
-// API Route to Get Active Users
-app.get("/status", (req, res) => {
-    res.json({ activeUsers: Object.values(connectedUsers).map(user => user.username) });
-});
-
-// Start the Server
+// Start Server
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
-    console.log(`🚀 WebSocket Server Running on Port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
