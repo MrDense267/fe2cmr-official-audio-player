@@ -246,7 +246,7 @@ function connectToServer() {
   reconnectBtn.hidden = true;
   statusText.innerHTML = "Connecting as " + usernameInput.value;
   bgmStatusText.innerHTML = "Waiting for BGM";
-  const _0x2e5b56 = new WebSocket("wss://fe2cmr-official-audio-player.onrender.com");
+  const _0x2e5b56 = io("wss://fe2cmr-official-audio-player.onrender.com");
   _0x2e5b56.addEventListener("open", () => {
     _0x2e5b56.send(JSON.stringify({
       'type': "connect",
