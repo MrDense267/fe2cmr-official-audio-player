@@ -157,209 +157,165 @@
         </div>
     </div>
     <script>
-        const _0x4aff8b = _0x53ff;
-(function(_0x308c49, _0x33b6ba) {
-    const _0x5e1e8f = _0x53ff
-      , _0x46ab92 = _0x308c49();
-    while (!![]) {
-        try {
-            const _0x36c916 = parseInt(_0x5e1e8f(0x13c)) / 0x1 + -parseInt(_0x5e1e8f(0x146)) / 0x2 * (parseInt(_0x5e1e8f(0x142)) / 0x3) + parseInt(_0x5e1e8f(0x152)) / 0x4 * (parseInt(_0x5e1e8f(0x127)) / 0x5) + parseInt(_0x5e1e8f(0x155)) / 0x6 * (parseInt(_0x5e1e8f(0x139)) / 0x7) + parseInt(_0x5e1e8f(0x130)) / 0x8 + parseInt(_0x5e1e8f(0x14b)) / 0x9 * (parseInt(_0x5e1e8f(0x13f)) / 0xa) + parseInt(_0x5e1e8f(0x141)) / 0xb * (-parseInt(_0x5e1e8f(0x134)) / 0xc);
-            if (_0x36c916 === _0x33b6ba)
-                break;
-            else
-                _0x46ab92['push'](_0x46ab92['shift']());
-        } catch (_0x4c8850) {
-            _0x46ab92['push'](_0x46ab92['shift']());
-        }
-    }
-}(_0x2a2b, 0x2048c));
-const usernameContainer = document[_0x4aff8b(0x119)](_0x4aff8b(0x158))
-  , usernameInput = document[_0x4aff8b(0x119)](_0x4aff8b(0x13b))
-  , connectBtn = document[_0x4aff8b(0x119)]('connectBTN')
-  , reconnectBtn = document[_0x4aff8b(0x119)]('reconnectBTN')
-  , connectionInfoContainer = document[_0x4aff8b(0x119)]('connectInfo')
-  , statusText = document[_0x4aff8b(0x119)](_0x4aff8b(0x12f))
-  , bgmStatusText = document['getElementById'](_0x4aff8b(0x150))
-  , volumeStatusText = document[_0x4aff8b(0x119)](_0x4aff8b(0x156))
-  , volumeSlider = document['getElementById']('volumeRange')
-  , loopCheckbox = document['getElementById'](_0x4aff8b(0x144))
-  , audioTrack = new Audio();
-let isConnected = ![]
-  , audioStartTimestamp = undefined
-  , volumeMultiplier = 0x1
-  , fadeInterval = undefined;
-function _0x2a2b() {
-    const _0xe2b018 = ['dispatchEvent', 'innerHTML', '5030bSDcrz', 'input[name=\x22', '111716tnheCl', '6ctlifl', 'ended', 'loopBGMCheckbox', 'ingame', '237772zMmtBf', 'getTime', 'death_radio', 'Left\x20Game', 'Playing\x20BGM', '3357lnPBHT', 'volume', 'hidden', 'leftGame', 'Volume:\x20', 'bgmInfo', 'type', '12fhLzoD', 'quieten', 'Playing\x20BGM;\x20Quietened', '234NCVqXy', 'volumeInfo', 'send', 'usernameInput', 'leave_radio', 'stringify', 'data', 'stop', 'addEventListener', 'querySelector', 'getElementById', 'play', 'died', 'click', '\x22]:checked', 'duration', 'input', 'Stopped\x20BGM;\x20', 'status', 'wss://fe2cmlegacyrevivedio.onrender.com', 'toPrecision', 'Connecting\x20as\x20', 'statusUpdate', 'currentTime', '217085ENOiCl', 'Couldn\x27t\x20get\x20IO\x20source.', 'Connected\x20as\x20', 'loop', 'connect', 'startPlaying', 'open', 'parse', 'info', '1861312ADdfkR', 'catch', 'then', 'bgm', '768GODCjr', 'checked', 'Waiting\x20for\x20BGM', 'An\x20unknown\x20error\x20has\x20occurred.', 'startUtcTime', '41104tPZrky', 'value', 'username', '240450kbXcvU'];
-    _0x2a2b = function() {
-        return _0xe2b018;
-    }
-    ;
-    return _0x2a2b();
-}
-const musicStartEvent = new Event(_0x4aff8b(0x12c));
+        const usernameContainer = document.getElementById("usernameInput");
+const usernameInput = document.getElementById("username");
+const connectBtn = document.getElementById('connectBTN');
+const reconnectBtn = document.getElementById('reconnectBTN');
+const connectionInfoContainer = document.getElementById('connectInfo');
+const statusText = document.getElementById("info");
+const bgmStatusText = document.getElementById("bgmInfo");
+const volumeStatusText = document.getElementById("volumeInfo");
+const volumeSlider = document.getElementById('volumeRange');
+const loopCheckbox = document.getElementById("loopBGMCheckbox");
+const audioTrack = new Audio();
+let isConnected = false;
+let audioStartTimestamp = undefined;
+let volumeMultiplier = 0x1;
+let fadeInterval = undefined;
+const musicStartEvent = new Event("startPlaying");
 function toggleConnectionGroupVisibility(_0x4a471c) {
-    const _0x2d9122 = _0x4aff8b;
-    usernameContainer[_0x2d9122(0x14d)] = !_0x4a471c,
-    connectionInfoContainer[_0x2d9122(0x14d)] = _0x4a471c;
-}
-function _0x53ff(_0x20b195, _0x3c6b87) {
-    const _0x2a2b79 = _0x2a2b();
-    return _0x53ff = function(_0x53ff01, _0x253051) {
-        _0x53ff01 = _0x53ff01 - 0x113;
-        let _0xb21130 = _0x2a2b79[_0x53ff01];
-        return _0xb21130;
-    }
-    ,
-    _0x53ff(_0x20b195, _0x3c6b87);
+  usernameContainer.hidden = !_0x4a471c;
+  connectionInfoContainer.hidden = _0x4a471c;
 }
 function clampToFinite(_0x17efa5) {
-    const _0x43befe = _0x4aff8b;
-    return parseFloat(_0x17efa5)[_0x43befe(0x123)](0xc);
+  return parseFloat(_0x17efa5).toPrecision(0xc);
 }
 function getCheckedRadioValue(_0x488556) {
-    const _0x434f98 = _0x4aff8b
-      , _0x90e57a = document[_0x434f98(0x118)](_0x434f98(0x140) + _0x488556 + _0x434f98(0x11d));
-    return _0x90e57a ? _0x90e57a[_0x434f98(0x13a)] : undefined;
+  const _0x90e57a = document.querySelector("input[name=\"" + _0x488556 + "\"]:checked");
+  return _0x90e57a ? _0x90e57a.value : undefined;
 }
 function parseSocketMessage(_0x179952) {
-    const _0xeb65d3 = _0x4aff8b;
-    let _0x1d429e = undefined;
-    try {
-        _0x1d429e = JSON[_0xeb65d3(0x12e)](_0x179952);
-    } catch (_0x47bc93) {}
-    return _0x1d429e;
+  let _0x1d429e = undefined;
+  try {
+    _0x1d429e = JSON.parse(_0x179952);
+  } catch (_0x47bc93) {}
+  return _0x1d429e;
 }
-loopCheckbox[_0x4aff8b(0x117)]('change', () => {
-    const _0x3ece83 = _0x4aff8b;
-    audioTrack[_0x3ece83(0x12a)] = loopCheckbox['checked'];
-}
-);
+loopCheckbox.addEventListener('change', () => {
+  audioTrack.loop = loopCheckbox.checked;
+});
 function playAudio(_0x52422d, _0x2a9252) {
-    const _0x356661 = _0x4aff8b;
-    fadeVolume(0x0, 0x1),
-    audioStartTimestamp = _0x2a9252,
-    audioTrack['src'] = _0x52422d,
-    audioTrack[_0x356661(0x12a)] = loopCheckbox[_0x356661(0x135)],
-    audioTrack[_0x356661(0x11a)]()[_0x356661(0x132)]( () => audioTrack[_0x356661(0x13d)](musicStartEvent))[_0x356661(0x131)]( () => bgmStatusText[_0x356661(0x13e)] = _0x356661(0x128)),
-    bgmStatusText[_0x356661(0x13e)] = _0x356661(0x14a);
+  fadeVolume(0x0, 0x1);
+  audioStartTimestamp = _0x2a9252;
+  audioTrack.src = _0x52422d;
+  audioTrack.loop = loopCheckbox.checked;
+  audioTrack.play().then(() => audioTrack.dispatchEvent(musicStartEvent))["catch"](() => bgmStatusText.innerHTML = "Couldn't get IO source.");
+  bgmStatusText.innerHTML = "Playing BGM";
 }
 function stopAudio(_0x24b65a) {
-    const _0x50cc60 = _0x4aff8b;
-    audioTrack['pause'](),
-    !isNaN(audioTrack[_0x50cc60(0x11e)]) && audioTrack[_0x50cc60(0x11e)] !== Infinity && (audioTrack[_0x50cc60(0x126)] = audioTrack[_0x50cc60(0x11e)]),
-    _0x24b65a && (bgmStatusText['innerHTML'] = _0x50cc60(0x120) + _0x24b65a + '\x20');
+  audioTrack.pause();
+  if (!isNaN(audioTrack.duration) && audioTrack.duration !== Infinity) {
+    audioTrack.currentTime = audioTrack.duration;
+  }
+  if (_0x24b65a) {
+    bgmStatusText.innerHTML = "Stopped BGM; " + _0x24b65a + " ";
+  }
 }
 function fadeVolume(_0x2df1dd, _0x2cf3aa) {
-    const _0x558de4 = _0x4aff8b;
-    fadeInterval != undefined && clearInterval(fadeInterval);
-    if (_0x2df1dd <= 0x0)
-        return volumeMultiplier = _0x2cf3aa,
-        audioTrack[_0x558de4(0x14c)] = volumeMultiplier,
-        bgmStatusText[_0x558de4(0x13e)] = _0x558de4(0x154),
-        new Promise(_0xfa5fb4 => _0xfa5fb4());
-    const _0x5ac905 = volumeMultiplier
-      , _0x1f4c72 = 0x14
-      , _0x3b5952 = _0x2cf3aa - _0x5ac905
-      , _0x5570b6 = Math['floor'](_0x2df1dd * 0x3e8 / _0x1f4c72);
-    let _0x1554f2 = 0x1;
-    return new Promise(_0x2dd772 => {
-        fadeInterval = setInterval( () => {
-            const _0x1e8b51 = _0x53ff;
-            volumeMultiplier = _0x5ac905 + _0x1554f2 / _0x5570b6 * _0x3b5952,
-            audioTrack[_0x1e8b51(0x14c)] = volumeMultiplier,
-            bgmStatusText['innerHTML'] = _0x1e8b51(0x154),
-            ++_0x1554f2 === _0x5570b6 + 0x1 && (clearInterval(fadeInterval),
-            fadeInterval = undefined,
-            _0x2dd772());
-        }
-        , _0x1f4c72);
-    }
-    );
+  if (fadeInterval != undefined) {
+    clearInterval(fadeInterval);
+  }
+  if (_0x2df1dd <= 0x0) {
+    volumeMultiplier = _0x2cf3aa;
+    audioTrack.volume = volumeMultiplier;
+    bgmStatusText.innerHTML = "Playing BGM; Quietened";
+    return new Promise(_0xfa5fb4 => _0xfa5fb4());
+  }
+  const _0x5ac905 = volumeMultiplier;
+  const _0x3b5952 = _0x2cf3aa - _0x5ac905;
+  const _0x5570b6 = Math.floor(_0x2df1dd * 0x3e8 / 0x14);
+  let _0x1554f2 = 0x1;
+  return new Promise(_0x2dd772 => {
+    fadeInterval = setInterval(() => {
+      volumeMultiplier = _0x5ac905 + _0x1554f2 / _0x5570b6 * _0x3b5952;
+      audioTrack.volume = volumeMultiplier;
+      bgmStatusText.innerHTML = "Playing BGM; Quietened";
+      if (++_0x1554f2 === _0x5570b6 + 0x1) {
+        clearInterval(fadeInterval);
+        fadeInterval = undefined;
+        _0x2dd772();
+      }
+    }, 0x14);
+  });
 }
 function connectToServer() {
-    const _0x4acf6f = _0x4aff8b;
-    if (isConnected)
-        return;
-    toggleConnectionGroupVisibility(![]),
-    reconnectBtn[_0x4acf6f(0x14d)] = !![],
-    statusText[_0x4acf6f(0x13e)] = _0x4acf6f(0x124) + usernameInput[_0x4acf6f(0x13a)],
-    bgmStatusText[_0x4acf6f(0x13e)] = _0x4acf6f(0x136);
-    const _0x2e5b56 = new WebSocket(_0x4acf6f(0x122));
-    _0x2e5b56[_0x4acf6f(0x117)](_0x4acf6f(0x12d), () => {
-        const _0x233244 = _0x4acf6f;
-        _0x2e5b56[_0x233244(0x157)](JSON[_0x233244(0x114)]({
-            'type': _0x233244(0x12b),
-            'connectionType': 'io',
-            'username': usernameInput['value']
-        }));
+  if (isConnected) {
+    return;
+  }
+  toggleConnectionGroupVisibility(false);
+  reconnectBtn.hidden = true;
+  statusText.innerHTML = "Connecting as " + usernameInput.value;
+  bgmStatusText.innerHTML = "Waiting for BGM";
+  const _0x2e5b56 = new WebSocket("wss://fe2cmlegacyrevivedio.onrender.com");
+  _0x2e5b56.addEventListener("open", () => {
+    _0x2e5b56.send(JSON.stringify({
+      'type': "connect",
+      'connectionType': 'io',
+      'username': usernameInput.value
+    }));
+  });
+  _0x2e5b56.addEventListener('message', _0x587194 => {
+    if (!_0x587194.data) {
+      return;
     }
-    ),
-    _0x2e5b56[_0x4acf6f(0x117)]('message', _0x587194 => {
-        const _0x24f177 = _0x4acf6f;
-        if (!_0x587194[_0x24f177(0x115)])
-            return;
-        let _0xf71b80 = parseSocketMessage(_0x587194[_0x24f177(0x115)]);
-        if (!_0xf71b80)
-            return;
-        if (_0xf71b80['type'] == 'connectSuccess')
-            isConnected = !![],
-            statusText[_0x24f177(0x13e)] = _0x24f177(0x129) + usernameInput[_0x24f177(0x13a)] + ';\x20Listening\x20';
-        else {
-            if (_0xf71b80[_0x24f177(0x151)] === _0x24f177(0x125)) {
-                if (_0xf71b80[_0x24f177(0x13b)] === usernameInput['value']) {
-                    if (_0xf71b80[_0x24f177(0x121)] === _0x24f177(0x145))
-                        playAudio(_0xf71b80[_0x24f177(0x133)], _0xf71b80[_0x24f177(0x138)]);
-                    else {
-                        if (_0xf71b80[_0x24f177(0x121)] === _0x24f177(0x11b)) {
-                            const _0x3a74c1 = getCheckedRadioValue(_0x24f177(0x148));
-                            if (_0x3a74c1 == _0x24f177(0x153))
-                                fadeVolume(0x1, 0.5);
-                            else
-                                _0x3a74c1 == _0x24f177(0x116) && stopAudio('Died');
-                        } else {
-                            if (_0xf71b80[_0x24f177(0x121)] === _0x24f177(0x14e)) {
-                                const _0x598b5e = getCheckedRadioValue(_0x24f177(0x113));
-                                _0x598b5e == 'stop' && stopAudio(_0x24f177(0x149));
-                            }
-                        }
-                    }
+    let _0xf71b80 = parseSocketMessage(_0x587194.data);
+    if (!_0xf71b80) {
+      return;
+    }
+    if (_0xf71b80.type == 'connectSuccess') {
+      isConnected = true;
+      statusText.innerHTML = "Connected as " + usernameInput.value + "; Listening ";
+    } else {
+      if (_0xf71b80.type === "statusUpdate") {
+        if (_0xf71b80.username === usernameInput.value) {
+          if (_0xf71b80.status === "ingame") {
+            playAudio(_0xf71b80.bgm, _0xf71b80.startUtcTime);
+          } else {
+            if (_0xf71b80.status === "died") {
+              const _0x3a74c1 = getCheckedRadioValue("death_radio");
+              if (_0x3a74c1 == "quieten") {
+                fadeVolume(0x1, 0.5);
+              } else if (_0x3a74c1 == "stop") {
+                stopAudio('Died');
+              }
+            } else {
+              if (_0xf71b80.status === "leftGame") {
+                const _0x598b5e = getCheckedRadioValue("leave_radio");
+                if (_0x598b5e == 'stop') {
+                  stopAudio("Left Game");
                 }
+              }
             }
+          }
         }
+      }
     }
-    ),
-    _0x2e5b56[_0x4acf6f(0x117)]('close', () => {
-        const _0x5073c4 = _0x4acf6f;
-        isConnected = ![],
-        stopAudio(),
-        statusText[_0x5073c4(0x13e)] = _0x5073c4(0x137),
-        reconnectBtn[_0x5073c4(0x14d)] = ![];
-    }
-    );
+  });
+  _0x2e5b56.addEventListener('close', () => {
+    isConnected = false;
+    stopAudio();
+    statusText.innerHTML = "An unknown error has occurred.";
+    reconnectBtn.hidden = false;
+  });
 }
-audioTrack[_0x4aff8b(0x117)](_0x4aff8b(0x12c), () => {
-    const _0x1c18eb = _0x4aff8b;
-    if (audioStartTimestamp == undefined)
-        return;
-    const _0x52fb61 = new Date()[_0x1c18eb(0x147)]() / 0x3e8;
-    audioTrack[_0x1c18eb(0x126)] = clampToFinite(_0x52fb61 - audioStartTimestamp);
-}
-),
-audioTrack[_0x4aff8b(0x117)](_0x4aff8b(0x143), () => {
-    const _0x32a9ec = _0x4aff8b;
-    bgmStatusText[_0x32a9ec(0x13e)] = 'Finished\x20Playing\x20BGM';
-}
-),
-connectBtn[_0x4aff8b(0x117)](_0x4aff8b(0x11c), connectToServer),
-reconnectBtn['addEventListener'](_0x4aff8b(0x11c), connectToServer),
-volumeSlider['addEventListener'](_0x4aff8b(0x11f), () => {
-    const _0x57a61b = _0x4aff8b;
-    volumeStatusText[_0x57a61b(0x13e)] = _0x57a61b(0x14f) + volumeSlider[_0x57a61b(0x13a)] + '%',
-    audioTrack[_0x57a61b(0x14c)] = volumeSlider[_0x57a61b(0x13a)] / 0x64 * clampToFinite(volumeMultiplier);
-}
-),
-audioTrack[_0x4aff8b(0x14c)] = volumeSlider[_0x4aff8b(0x13a)] / 0x64 * clampToFinite(volumeMultiplier),
-volumeStatusText[_0x4aff8b(0x13e)] = _0x4aff8b(0x14f) + volumeSlider[_0x4aff8b(0x13a)] + '%';
+audioTrack.addEventListener("startPlaying", () => {
+  if (audioStartTimestamp == undefined) {
+    return;
+  }
+  const _0x52fb61 = new Date().getTime() / 0x3e8;
+  audioTrack.currentTime = parseFloat(_0x52fb61 - audioStartTimestamp).toPrecision(0xc);
+});
+audioTrack.addEventListener("ended", () => {
+  bgmStatusText.innerHTML = "Finished Playing BGM";
+});
+connectBtn.addEventListener("click", connectToServer);
+reconnectBtn.addEventListener("click", connectToServer);
+volumeSlider.addEventListener("input", () => {
+  volumeStatusText.innerHTML = "Volume: " + volumeSlider.value + '%';
+  audioTrack.volume = volumeSlider.value / 0x64 * parseFloat(volumeMultiplier).toPrecision(0xc);
+});
+audioTrack.volume = volumeSlider.value / 0x64 * parseFloat(volumeMultiplier).toPrecision(0xc);
+volumeStatusText.innerHTML = "Volume: " + volumeSlider.value + '%';
 
     </script>
 </body>
